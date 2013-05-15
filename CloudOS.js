@@ -228,7 +228,7 @@
 	};
 
         // exchange OAuth code for token
-        CloudOS.retrieveOAuthCode = function(query, callback) {
+        CloudOS.retrieveOAuthCode = function(query) {
 	  if (query != "") {
 	    var oauthCode = getQueryVariable('code');
 	    if (oauthCode) {
