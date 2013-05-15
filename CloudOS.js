@@ -5,9 +5,9 @@
 	// Personal Cloud Hostname
 	CloudOS.host = "cs.kobj.net";
 
-	CloudOS.appKey = "E3D243D4-B28B-11E2-A01C-1615FE2E5C38";
+	CloudOS.appKey = "YOURAPPKEYHERE";
 
-	CloudOS.callbackURL = "http://forevr.us/";
+	CloudOS.callbackURL = "YOURAPPSURLHERE";
 
 	CloudOS.sessionToken = "none";
 
