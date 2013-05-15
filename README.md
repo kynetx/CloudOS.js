@@ -125,4 +125,10 @@ TODO: fill this part out
 ```
 
 ## Raising Events
-### 
+You can raise general events using the CloudOS.js library. This makes it possible to create any custom behavior. You can also create KRL rulesets which listen for these events or use existing events and rulesets.
+
+### `CloudOS.raiseEvent(domain, type, attributes, parameters, callback)`
+Raises an event using an HTTP POST. Again, I do not know the difference between attributes and parameters.
+
+### `CloudOS.skyCloud(module, functionName, parameters, callback)`
+Calls the sky cloud API. This allows you to get data from module functions.
