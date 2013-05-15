@@ -12,8 +12,8 @@ CloudOS.js is a library that interacts with CloudOS Personal Clouds. It uses the
 6. View your new app. In order to get the developer token, you'll need to click on your newly created app.
 7. Configure the CloudOS object by putting the following definitions in the JavaScript for your app after loading the CloudOS.js library:
 ```
-   	CloudOS.appKey = "App_key_from_the_KDK";
-	CloudOS.callbackURL = "URL_to_the_page_in_your_app_that_exchanges_OAuth_code_for_token";
+CloudOS.appKey = "App_key_from_the_KDK";
+CloudOS.callbackURL = "URL_to_the_page_in_your_app_that_exchanges_OAuth_code_for_token";
 ```
 
 ## CloudOS.js Methods
