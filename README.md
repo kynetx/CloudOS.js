@@ -10,8 +10,11 @@ CloudOS.js is a library that interacts with CloudOS Personal Clouds. It uses the
 4. Run the KDK. Open up [myApps](https://squaretag.com/app.html#!/app/a169x670/show) and click on the KDK icon.
 5. Create an app. Open the app menu and select `Create App`. Enter your application's details and save the app. The required fields are similar to other OAuth protected API's.
 6. View your new app. In order to get the developer token, you'll need to click on your newly created app.
-7. Modify CloudOS.js to include your app's base callback URL and developer token.
-
+7. Configure the CloudOS object by putting the following declarations in the JavaScript for your app after loading the CloudOS.js library:
+```
+CloudOS.appKey = "App_key_from_the_KDK";
+CloudOS.callbackURL = "URL_to_the_page_in_your_app_that_exchanges_OAuth_code_for_token";
+```
 
 ## CloudOS.js Methods
 
@@ -31,6 +34,16 @@ An optional parameter, callback, can be provided. The callback should take one p
  "access_token":"OAUTH_ACCESS_TOKEN",
  "OAUTH_ECI":"USER_ECI"
 }
+```
+
+### `CloudOS.retrieveOAuthCode(query_string)`
+Looks in the string passed in as `query_string` for a parameter named `code` and returns the value. This function is a helper function for retrieving the `code` passed into `CloudOS.getOAuthAccessToken()`.  For example:
+```
+CloudOS.getOAuthAccessToken(
+     CloudOS.retrieveOAuthCode(window.location.search.substring(1)),
+     function(json) {
+	    // callback code (post authentication) here
+     });
 ```
 
 ### `CloudOS.retrieveSession()`

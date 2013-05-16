@@ -163,7 +163,7 @@
 		var client_state = Math.floor(Math.random()*9999999);
 		var url = 'https://' + CloudOS.host +
 			'/oauth/authorize?response_type=code' +
-			'&redirect_uri=' + encodeURIComponent(CloudOS.callbackURL + fragment) +
+			'&redirect_uri=' + encodeURIComponent(CloudOS.callbackURL + (fragment||"")) +
 			'&client_id=' + CloudOS.appKey +
 			'&state=' + client_state;
 
@@ -190,7 +190,7 @@
 				dataType: 'json',
 				success: function(json) {
 					CloudOS.saveSession(json.OAUTH_ECI);
-          callback(json);
+				        callback(json);
 				},
 			})
 	}
@@ -223,8 +223,37 @@
 
 	// ------------------------------------------------------------------------
 	CloudOS.authenticatedSession  = function() {
+	  console.log("session token: ", CloudOS.sessionToken );
 		return(CloudOS.sessionToken !== "none")
 	};
+
+        // exchange OAuth code for token
+        CloudOS.retrieveOAuthCode = function(query) {
+	  if (query != "") {
+	    var oauthCode = getQueryVariable('code');
+	    if (oauthCode) {
+	      return oauthCode;
+	    } else {
+	      console.log('No OAuth token in query string: ', query);
+	      return "";
+	    }
+	  }
+	};
+
+	// used above to grab the "code" query var
+        function getQueryVariable(variable) {
+	  var query = window.location.search.substring(1);
+	  var vars = query.split('&');
+	  for (var i = 0; i < vars.length; i++) {
+	    var pair = vars[i].split('=');
+            if (decodeURIComponent(pair[0]) == variable) {
+	      return decodeURIComponent(pair[1]);
+	    }
+	  }
+	  console.log('Query variable %s not found', variable);
+	};
+
+
 
 	var SkyTokenName = '__SkySessionToken';
 	var SkyTokenExpire = 7;
