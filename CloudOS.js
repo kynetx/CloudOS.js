@@ -155,6 +155,10 @@
 		CloudOS.skyCloud("cloudos", "subscriptionList", callParmeters, getSuccess);
 	};
 
+	CloudOS.getFriendsList  = function(getSuccess) {
+		CloudOS.skyCloud("a169x727", "getFriendsList", "", getSuccess);
+	};
+
 	// ========================================================================
 	// OAuth functions
 

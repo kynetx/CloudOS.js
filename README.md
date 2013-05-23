@@ -129,12 +129,37 @@ Sends a notification to the user identified by `token`. Similar to `CloudOS.send
 Creates a subscription between the current user and the user identified by `token`. `namespace`, `name` and `relationship` are all strings identifying the type of subscription. `subscriptionAttributes' is a hash containing data you wish to include with the subscription.
 
 ### `CloudOS.subscriptionList(callParameters, callback)`
-Returns all subscriptions. I have no clue what `callParameters` is, though. None what-so-ever. `callback` is the callback function we call with the subscriptions. It should accept one parameter that is the subscriptions. It looks like:
+Returns all subscriptions. `callParameters` is a string with the URL encoded parameters. The parameters that matter are `namespace` and `relationship`. For example, Forever uses `"namespace=Forever&relationship=friend"`. `callback` is the callback function we call with the subscriptions. It should accept one parameter that is the subscriptions. It looks like:
 
-TODO: fill this part out
 ```
-{
-}
+[
+  {
+    "eventChannel":"A1006530-C240-11E2-9978-17CDB0392E66",
+    "namespace":"Forever",
+    "relationship":"friend",
+    "approveAttrs":"{}",
+    "backChannel":"A1EABEAA-C240-11E2-A9EB-ECECE71C24E1",
+    "subAttrs":"",
+    "channelName":"Forever Friend"
+  }
+]
+```
+
+### `CloudOS.getFriendsList(callback)`
+Returns friend subscriptions with their profile information. `callback` is the callback function we call with the subscriptions. It should accept one parameter that is the subscriptions. It looks like:
+
+```
+[
+  {
+    "eventChannel": "AAAAAA-AAAAA-AAAA-AAAA-AAAAAAAAAAAAA",
+    "myProfileName": "Bob Smith",
+    "myProfileNotes": null,
+    "myProfilePhoto": "https://s3.amazonaws.com/k-mycloud/a169x672/unknown.png",
+    "myProfileDescription": "null",
+    "myProfilePhone": null,
+    "myProfileEmail": null
+  }
+]
 ```
 
 ## Raising Events
