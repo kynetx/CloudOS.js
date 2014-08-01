@@ -350,7 +350,7 @@
 
 
     // ------------------------------------------------------------------------
-    CloudOS.getOAuthAccessToken = function(code, callback)
+    CloudOS.getOAuthAccessToken = function(code, callback, error_func)
     {
         var returned_state = parseInt(getQueryVariable("state"));
         var expected_state = parseInt(window.localStorage.getItem("CloudOS_CLIENT_STATE"));
@@ -389,6 +389,7 @@
             error: function(json)
             {
                 console.log("Failed to retrieve access token " + json);
+		error_func(json);
             }
         });
     };
