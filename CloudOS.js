@@ -389,6 +389,7 @@
             error: function(json)
             {
                 console.log("Failed to retrieve access token " + json);
+                error_func = error_func || function(){};
 		error_func(json);
             }
         });
