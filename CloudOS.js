@@ -378,7 +378,7 @@
             {
                 console.log("Recieved following authorization object from access token request: ", json);
                 if (!json.OAUTH_ECI) {
-                    console.error("Recieved invalid OAUTH_ECI. Not saving session.");
+                    console.error("Received invalid OAUTH_ECI. Not saving session.");
                     callback(json);
                     return;
                 };
